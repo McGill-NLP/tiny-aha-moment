@@ -1,0 +1,30 @@
+[project]
+name = "tiny-aha"
+version = "0.1.0"
+readme = "README.md"
+requires-python = ">=3.10,<3.11"
+dependencies = [
+    "torch>=2.1",
+    "vllm==0.7.3",
+    "datasets",
+    "deepspeed",
+    "jupyter",
+    "ipykernel",
+    "ipywidgets",
+    "wandb",
+    "einops",
+    "accelerate",
+]
+
+# flash-attn related setups
+[project.optional-dependencies]
+compile = ["flash-attn==2.7.2.post1"]
+
+[tool.uv]
+python-preference = "only-managed"
+no-build-isolation-package = ["flash-attn"]
+
+[[tool.uv.dependency-metadata]]
+name = "flash-attn"
+version = "2.7.2.post1"
+requires-dist = ["torch", "setuptools"]
